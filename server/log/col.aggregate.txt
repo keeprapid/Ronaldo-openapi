@@ -1,0 +1,8 @@
+col.aggregate([{'$match':{ "uid" : "22DA3DE6-2A7E-4CCE-9C52-278B9D857C84","datestr":"2016-07-04","mode":{"$lte":10}}},{'$group':{'_id':'$mode','step':{'$sum':'$step'},'cal':{'$sum':'$calories'},'steps':{'$sum':'$steps'},'distance':{'$sum':'$distance'}}},{'$project':{'_id':1,'step':1,'cal':1,'steps':1,'distance':1}}])
+
+
+col.aggregate([{'$match':{ "uid" : "22DA3DE6-2A7E-4CCE-9C52-278B9D857C84","datestr":"2016-07-04","mode":{"$lt":255}}},{'$group':{'_id':'$mode','step':{'$sum':'$step'},'cal':{'$sum':'$calories'},'steps':{'$sum':'$steps'},'distance':{'$sum':'$distance'},'count':{'$sum':1}}}])
+
+
+
+aggregate([{'$match':{"uid":uid,"datestr":datestr,"mode":{"$lt":255}}},{'$group':{'_id':'$mode','step':{'$sum':'$step'},'cal':{'$sum':'$calories'},'distance':{'$sum':'$distance'},'count':{'$sum':1}}},{'$group':{'_id':'$mode','step':{'$sum':'$step'},'cal':{'$sum':'$calories'},'distance':{'$sum':'$distance'},'count':{'$sum':1}}}])
